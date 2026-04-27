@@ -14,9 +14,9 @@ COPY tsconfig.base.json ./
 # Install dependencies (use different command to break cache)
 RUN npm install --legacy-peer-deps
 
-# Build TypeScript
-RUN npx tsc -p packages/server/tsconfig.json
+# Build TypeScript (shared first, then server)
 RUN npx tsc -p packages/shared/tsconfig.json
+RUN npx tsc -p packages/server/tsconfig.json
 
 # Production stage
 FROM node:20-alpine AS production
