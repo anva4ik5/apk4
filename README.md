@@ -72,14 +72,20 @@
 2. Выбери свой репозиторий
 3. Railway автоматически использует `railway.json` для сборки
 
-4. Добавь переменные окружения в Backend service:
-   ```
-   DATABASE_URL = ${{Postgres.DATABASE_URL}}
-   JWT_SECRET = твой_длинный_секретный_ключ_минимум_32_символов
-   ADMIN_TOKEN = твой_админ_токен
-   CORS_ORIGINS = *
-   PORT = 3000
-   ```
+4. Переменные окружения настраиваются автоматически:
+   - `DATABASE_URL` = `${{Postgres.DATABASE_URL}}` (автоматически из PostgreSQL плагина)
+   - `PORT` = `3000` (автоматически)
+   - `NODE_ENV` = `production` (автоматически)
+   - `TRUST_PROXY` = `true` (автоматически для Railway)
+   - `CORS_ORIGINS` = `*` (автоматически)
+   - `RATE_LIMIT_WINDOW_MS` = `60000` (автоматически)
+   - `RATE_LIMIT_MAX` = `120` (автоматически)
+   - `AUTH_RATE_LIMIT_WINDOW_MS` = `60000` (автоматически)
+   - `AUTH_RATE_LIMIT_MAX` = `20` (автоматически)
+
+5. Только эти переменные нужно задать вручную в Railway:
+   - `JWT_SECRET` = длинный случайный секрет (минимум 32 символа)
+   - `ADMIN_TOKEN` = секрет админ-доступа
 
 #### Шаг 4: Деплой
 
