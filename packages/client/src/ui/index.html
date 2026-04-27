@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Majestic RP</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Auth Screen -->
+    <div id="auth-screen" class="screen">
+        <div class="auth-container">
+            <div class="auth-logo">
+                <h1>MAJESTIC RP</h1>
+                <p>Добро пожаловать в Los Santos</p>
+            </div>
+            <div class="auth-form">
+                <form id="login-form">
+                    <input type="text" id="login-email" placeholder="Email" required>
+                    <input type="password" id="login-password" placeholder="Пароль" required>
+                    <button type="submit">Войти</button>
+                </form>
+                <form id="register-form" class="hidden">
+                    <input type="text" id="register-email" placeholder="Email" required>
+                    <input type="password" id="register-password" placeholder="Пароль" required>
+                    <button type="submit">Регистрация</button>
+                </form>
+                <div class="auth-switch">
+                    <span id="to-register">Нет аккаунта? Регистрация</span>
+                    <span id="to-login" class="hidden">Уже есть аккаунт? Войти</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Character Selection -->
+    <div id="character-screen" class="screen hidden">
+        <div class="character-container">
+            <h2>Выбор персонажа</h2>
+            <div id="character-list" class="character-list"></div>
+            <button id="create-character-btn">Создать персонажа</button>
+        </div>
+    </div>
+
+    <!-- Character Creation -->
+    <div id="character-creation-screen" class="screen hidden">
+        <div class="character-creation-container">
+            <h2>Создание персонажа</h2>
+            <form id="character-creation-form">
+                <input type="text" id="char-first-name" placeholder="Имя" required>
+                <input type="text" id="char-last-name" placeholder="Фамилия" required>
+                <select id="char-gender">
+                    <option value="male">Мужчина</option>
+                    <option value="female">Женщина</option>
+                </select>
+                <button type="submit">Создать</button>
+                <button type="button" id="cancel-creation">Отмена</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- HUD -->
+    <div id="hud-screen" class="screen hidden">
+        <div class="hud">
+            <div class="hud-money">
+                <span class="cash-icon">$</span>
+                <span id="hud-cash">0</span>
+                <span class="bank-icon">🏦</span>
+                <span id="hud-bank">0</span>
+            </div>
+            <div class="hud-health">
+                <div class="health-bar">
+                    <div id="health-fill" class="fill"></div>
+                </div>
+                <div class="armor-bar">
+                    <div id="armor-fill" class="fill"></div>
+                </div>
+            </div>
+            <div class="hud-info">
+                <span id="hud-job">Безработный</span>
+                <span id="hud-faction"></span>
+            </div>
+            <div class="hud-voice">
+                <div id="voice-indicator"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inventory -->
+    <div id="inventory-screen" class="screen hidden">
+        <div class="inventory-container">
+            <div class="inventory-header">
+                <h2>Инвентарь</h2>
+                <button class="close-btn" data-screen="inventory">✕</button>
+            </div>
+            <div class="inventory-stats">
+                <span>Вес: <span id="inv-weight">0</span>/<span id="inv-max-weight">50</span> кг</span>
+                <span>Слоты: <span id="inv-slots">0</span>/<span id="inv-max-slots">30</span></span>
+            </div>
+            <div class="inventory-grid" id="inventory-grid"></div>
+            <div class="item-details" id="item-details">
+                <h3 id="item-name">Предмет</h3>
+                <p id="item-description">Описание</p>
+                <p id="item-quantity">Количество: 0</p>
+                <button id="use-item">Использовать</button>
+                <button id="drop-item">Выбросить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interaction Menu -->
+    <div id="interaction-screen" class="screen hidden">
+        <div class="interaction-menu">
+            <div class="interaction-header">
+                <h2>Меню взаимодействия</h2>
+                <button class="close-btn" data-screen="interaction">✕</button>
+            </div>
+            <div class="interaction-options" id="interaction-options">
+                <button class="interaction-option" data-action="handsup">🙌 Руки вверх</button>
+                <button class="interaction-option" data-action="surrender">🏳 Сдаться</button>
+                <button class="interaction-option" data-action="tablet">📱 Планшет</button>
+                <button class="interaction-option" data-action="phone">📞 Телефон</button>
+                <button class="interaction-option" data-action="inventory">🎒 Инвентарь</button>
+                <button class="interaction-option" data-action="animations">🎭 Анимации</button>
+                <button class="interaction-option" data-action="vehicle">🚗 Авто</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tablet -->
+    <div id="tablet-screen" class="screen hidden">
+        <div class="tablet-container">
+            <div class="tablet-header">
+                <h2>Планшет</h2>
+                <button class="close-btn" data-screen="tablet">✕</button>
+            </div>
+            <div class="tablet-apps" id="tablet-apps"></div>
+            <div class="tablet-content" id="tablet-content"></div>
+        </div>
+    </div>
+
+    <script src="ui.js"></script>
+</body>
+</html>

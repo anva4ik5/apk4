@@ -1,0 +1,12 @@
+name = "gta-rp-core"
+host = "0.0.0.0"
+port = 7788
+players = 128
+language = "js"
+description = "GTA RP Core Server"
+modules = [ "js-module" ]
+resources = [ "gta-rp-core" ]
+announce = false
+token = ""
+gamemode = "RP"
+website = "localhost"
