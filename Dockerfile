@@ -7,6 +7,11 @@ COPY package*.json ./
 COPY packages/server/package*.json ./packages/server/
 COPY packages/shared/package*.json ./packages/shared/
 
+# Copy TypeScript config files
+COPY tsconfig.base.json ./
+COPY packages/server/tsconfig.json ./packages/server/
+COPY packages/shared/tsconfig.json ./packages/shared/
+
 # Install dependencies
 RUN npm ci
 
