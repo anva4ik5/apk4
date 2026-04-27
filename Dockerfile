@@ -1,18 +1,18 @@
 # Dockerfile for Railway deployment
-# Build cache reset: v6 - completely restructure for cache busting
+# Build cache reset: v7 - use different npm command to break cache
 
 FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copy everything in different order to break cache
+# Copy everything
 COPY packages/shared ./packages/shared
 COPY packages/server ./packages/server
 COPY package*.json ./
 COPY tsconfig.base.json ./
 
-# Install dependencies
-RUN npm install
+# Install dependencies (use different command to break cache)
+RUN npm install --legacy-peer-deps
 
 # Build TypeScript
 RUN npx tsc -p packages/server/tsconfig.json
@@ -28,8 +28,8 @@ COPY package*.json ./
 COPY packages/server/package*.json ./packages/server/
 COPY packages/shared/package*.json ./packages/shared/
 
-# Install dependencies (npm install for workspaces support)
-RUN npm install
+# Install dependencies (use different command to break cache)
+RUN npm install --legacy-peer-deps
 
 # Copy source files
 COPY packages/server/src ./packages/server/src
