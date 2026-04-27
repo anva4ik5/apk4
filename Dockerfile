@@ -1,3 +1,6 @@
+# Dockerfile for Railway deployment
+# Build cache reset: v2
+
 FROM node:20-alpine AS builder
 
 WORKDIR /app
