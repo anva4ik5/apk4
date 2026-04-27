@@ -1,0 +1,19 @@
+{
+  "name": "gta-rp-core",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run -ws build",
+    "dev:server": "npm --workspace @gta-rp/server run dev",
+    "dev:altv": "npm --workspace @gta-rp/altv-server run dev",
+    "dev:launcher": "npm --workspace @gta-rp/launcher run dev",
+    "lint": "npm run -ws lint",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:build": "docker-compose build"
+  }
+}
