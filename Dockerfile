@@ -1,26 +1,15 @@
 # Dockerfile for Railway deployment
-# Build cache reset: v2
+# Build cache reset: v4 - copy all files before npm ci
 
 FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
-COPY packages/server/package*.json ./packages/server/
-COPY packages/shared/package*.json ./packages/shared/
-
-# Copy TypeScript config files
-COPY tsconfig.base.json ./
-COPY packages/server/tsconfig.json ./packages/server/
-COPY packages/shared/tsconfig.json ./packages/shared/
+# Copy all files at once to avoid cache issues
+COPY . .
 
 # Install dependencies
 RUN npm ci
-
-# Copy source files
-COPY packages/server/src ./packages/server/src
-COPY packages/shared/src ./packages/shared/src
 
 # Build TypeScript
 RUN npx tsc -p packages/server/tsconfig.json
